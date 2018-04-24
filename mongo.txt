@@ -1,0 +1,13 @@
+// Task:1 Create a collection named orders
+db.createCollection('orders')
+
+// Task:2 Insert at least 3 documents that represent an order. IMPORTANT: See section below for fields. Order dates should be: 2017-02-03, 2017-04-04, 2017-01-02
+db.orders.insert({orderDate: new Date('2017-02-03'), orderTotal: 1, lineItems: [{unitPrice: 2, quantity: 4, productName: "Desk Chair"}]});
+db.orders.insert({orderDate: new Date('2017-04-04'), orderTotal: 2, lineItems: [{unitPrice: 3, quantity: 4, productName: "Desk Chair"}]});
+db.orders.insert({orderDate: new Date('2017-01-02'), orderTotal: 5, lineItems: [{unitPrice: 6, quantity: 13, productName: "Printer"}]});
+
+// 2. Find all orders and make them look pretty.
+db.orders.find().pretty()
+
+// 3. Find all orders with an `orderDate` that is after 1/31/2017.
+db.orders.find({orderDate: {$gt: '2017-01-31'}});
